@@ -1,6 +1,6 @@
 import re
 from django.core.exceptions import ValidationError
-from .message import MESSAGE_ERROR_PHONE, MESSAGE_ERROR_REGEX
+from .message import *
 
 def phone_validator(value: str) -> None:
     """
@@ -30,3 +30,24 @@ def regex_validator(value: str, regex: str, message_error: str) -> None:
 
 
 
+
+def validate_image_extension(value):
+    if not value.name.lower().endswith(('.png', '.jpg', '.jpeg')):
+        raise ValidationError(MESSAGE_ERROR_IMAGE_EXPANSION)
+
+def validate_image_size(value):
+    """
+    Валидатор для проверки веса изображения.
+
+    :param value: Загружаемый файл
+    :raises ValidationError: Если размер файла превышает лимит
+    """
+    max_size_mb = 5  # Максимальный размер файла в МБ
+    if value.size > max_size_mb * 1024 * 1024:
+        raise ValidationError(
+            MESSAGE_ERROR_IMAGE_SIZE,
+            params={
+                'max_size_mb': max_size_mb,
+                'file_size': round(value.size / (1024 * 1024), 2)
+            }
+        )

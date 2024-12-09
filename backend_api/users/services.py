@@ -5,7 +5,7 @@ from users.validators import phone_validator
 
 def normalize_phone(value: str) -> str:
     """
-    Преобразование номера телефона к формату +389999999999
+    Преобразование номера телефона к формату 389999999999
     для записи в BD.
 
     :param value: str, номер телефона в формате +38 (999) 999 99 99
