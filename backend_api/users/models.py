@@ -2,7 +2,8 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 from django.conf import settings
 
-from .services import  normalize_phone
+from .services import normalize_phone
+from .validators import image_validate
 
 
 class User(AbstractUser):
@@ -37,7 +38,8 @@ class Additionally(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name="additional_info")
     phone = models.CharField(max_length=15, unique=True, verbose_name="Телефон")
     age = models.PositiveSmallIntegerField(verbose_name="Возраст")
-    avatar = models.ImageField(upload_to='media/avatars/', blank=True, null=True, verbose_name="Аватар")
+    avatar = models.ImageField(upload_to='media/avatars/', validators=[image_validate], blank=True, null=True,
+                               verbose_name="Аватар")
     first_name = models.CharField(max_length=100, verbose_name="Имя")
     last_name = models.CharField(max_length=100, verbose_name="Фамилия")
 

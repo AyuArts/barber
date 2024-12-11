@@ -15,7 +15,7 @@ def phone_validator(value: str) -> None:
 
 def regex_validator(value: str, regex: str, message_error: str) -> None:
     """
-    Универсальный валидатор для проверки значения на соответствие регулярному выражению.
+    Универсальный валидатор для проверки значения на соответствие реsdfгулярному выражению.
 
     :param value: str, значение, которое нужно проверить
     :param regex: str, регулярное выражение
@@ -29,7 +29,9 @@ def regex_validator(value: str, regex: str, message_error: str) -> None:
         raise ValidationError(MESSAGE_ERROR_REGEX.format(error=error))
 
 
-
+def image_validate(value) -> None:
+    validate_image_extension(value)
+    validate_image_size(value)
 
 def validate_image_extension(value):
     if not value.name.lower().endswith(('.png', '.jpg', '.jpeg')):
@@ -39,10 +41,10 @@ def validate_image_size(value):
     """
     Валидатор для проверки веса изображения.
 
-    :param value: Загружаемый файл
+    :param value: Загружаемый файл  
     :raises ValidationError: Если размер файла превышает лимит
     """
-    max_size_mb = 5  # Максимальный размер файла в МБ
+    max_size_mb = 5
     if value.size > max_size_mb * 1024 * 1024:
         raise ValidationError(
             MESSAGE_ERROR_IMAGE_SIZE,

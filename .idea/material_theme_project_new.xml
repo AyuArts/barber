@@ -3,8 +3,16 @@
   <component name="MaterialThemeProjectNewConfig">
     <option name="metadata">
       <MTProjectMetadataState>
-        <option name="userId" value="-f756b6a:193ab4d5288:-7fda" />
+        <option name="migrated" value="true" />
+        <option name="pristineConfig" value="false" />
+        <option name="userId" value="-1d77f6f8:1924d7a887b:-7ff7" />
       </MTProjectMetadataState>
+    </option>
+    <option name="tabsState">
+      <MTProjectTabsConfigState>
+        <option name="enabled" value="true" />
+        <option name="highlightThickness" value="1" />
+      </MTProjectTabsConfigState>
     </option>
   </component>
 </project>
